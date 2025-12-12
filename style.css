@@ -31,7 +31,22 @@ h1 {
     max-height: calc(200px * 4 / 3);
     perspective: 1000px; 
     cursor: pointer;
+    /* 초기 로딩 애니메이션을 위해 transition을 추가합니다 */
+    transition: transform 1s ease-out, opacity 0.5s ease-out;
+    opacity: 1; /* 애니메이션 시작 시점에 1로 설정됩니다. */
 }
+
+/* 🔄 초기 로딩 시 카드를 중앙에 모으는 스타일 */
+.card.initial-shuffle {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.5); /* 작게 시작 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(-18vw * 4 / 3 / 2); /* 카드를 중앙에 정렬 */
+    margin-left: calc(-18vw / 2);
+}
+
 
 .card-inner {
     position: relative;
@@ -80,5 +95,9 @@ h1 {
     .card {
         width: 40vw; 
         height: calc(40vw * 4 / 3);
+    }
+    .card.initial-shuffle {
+        margin-top: calc(-40vw * 4 / 3 / 2);
+        margin-left: calc(-40vw / 2);
     }
 }
