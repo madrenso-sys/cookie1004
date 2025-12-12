@@ -1,0 +1,84 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    background-color: #333; /* 짙은 회색 배경 */
+    color: #f0f0f0; 
+    margin: 0;
+    padding: 20px 0;
+    min-height: 100vh;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 25px; 
+    width: 90vw; 
+    max-width: 1000px; 
+    justify-content: center;
+}
+
+.card {
+    width: 18vw; 
+    max-width: 200px; 
+    height: calc(18vw * 4 / 3); /* 3:4 비율 */
+    max-height: calc(200px * 4 / 3);
+    perspective: 1000px; 
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s; 
+    transform-style: preserve-3d; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); 
+    border-radius: 12px;
+}
+
+.card.is-flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    
+    background-size: cover; 
+    background-position: center; 
+    color: transparent; 
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* 🎨 카드 앞면 (공통 PNG 이미지로 설정) */
+.card-front {
+    background-image: url('images/card_front_common.png'); /* 공통 앞면 PNG 이미지 경로 */
+    background-color: #4A89DC; 
+}
+
+.card-back {
+    background-color: #A0D468; 
+    transform: rotateY(180deg);
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 40vw; 
+        height: calc(40vw * 4 / 3);
+    }
+}
